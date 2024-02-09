@@ -1,13 +1,13 @@
 import 'dart:convert';
 
+import 'package:be_my_eyes/screens/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await FlutterConfig.loadEnvVariables();
+  await dotenv.load(fileName: ".env");
   runApp(const App());
 }
 
@@ -16,8 +16,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return MaterialApp(
+      home: AuthenticationScreen(),
     );
   }
 }
