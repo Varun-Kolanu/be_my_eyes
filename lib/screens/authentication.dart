@@ -1,18 +1,11 @@
+import 'package:be_my_eyes/widgets/app_bar.dart';
 import 'package:be_my_eyes/widgets/auth_footer.dart';
 import 'package:be_my_eyes/widgets/roles.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AuthenticationScreen extends StatelessWidget {
-  AuthenticationScreen({super.key});
-
-  final _appBar = AppBar(
-    title: const Text(
-      'Be My Eyes',
-    ),
-    backgroundColor: const Color(0xFF085fef),
-    foregroundColor: Colors.white,
-  );
+  const AuthenticationScreen({super.key});
 
   Widget _heading() {
     return Padding(
@@ -30,7 +23,7 @@ class AuthenticationScreen extends StatelessWidget {
 
   Widget _eyeImage() {
     return SizedBox(
-      width: 400,
+      width: 370,
       height: 230,
       child: Image.asset(
         'assets/images/eyes.png',
@@ -43,7 +36,10 @@ class AuthenticationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // print(dotenv.env['BACKEND_URL']);
     return Scaffold(
-      appBar: _appBar,
+      backgroundColor: Colors.white,
+      appBar: const CustomAppBar(
+        title: "Be My Eyes",
+      ),
       body: SizedBox(
         height: double.infinity,
         child: Column(

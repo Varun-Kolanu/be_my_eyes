@@ -65,7 +65,7 @@ class _RolesState extends State<Roles> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _rolesColumn(_roles?['blind'], 'Blind'),
-                _rolesColumn(_roles?['volunteers'], 'Volunteers'),
+                _rolesColumn(_roles?['volunteer'], 'Volunteers'),
               ],
             ),
           );
