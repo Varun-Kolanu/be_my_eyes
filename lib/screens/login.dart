@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:be_my_eyes/screens/asking_role.dart';
 import 'package:be_my_eyes/screens/main_screen.dart';
 import 'package:be_my_eyes/screens/register.dart';
 import 'package:be_my_eyes/utils/preferences_helper.dart';

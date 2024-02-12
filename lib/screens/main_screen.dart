@@ -1,5 +1,5 @@
-import 'package:be_my_eyes/screens/authentication.dart';
 import 'package:be_my_eyes/screens/home_blind.dart';
+import 'package:be_my_eyes/screens/home_volunteer.dart';
 import 'package:be_my_eyes/screens/settings.dart';
 import 'package:be_my_eyes/utils/preferences_helper.dart';
 import 'package:be_my_eyes/widgets/app_bar.dart';
@@ -13,23 +13,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  void _handleLogout(BuildContext context) async {
-    await deleteFromPreferences('jwt');
-    await deleteFromPreferences('role');
-    if (context.mounted) {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (BuildContext context) => const AuthenticationScreen(),
-        ),
-        (Route route) => false,
-      );
-    }
-  }
-
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const HomeBlind(),
+    const CustomScreen(),
     const Settings(),
   ];
 
@@ -64,6 +51,30 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CustomScreen extends StatelessWidget {
+  const CustomScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<String?>(
+      future: readFromPreferences('role'),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator(); // or any loading indicator
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else {
+          final role = snapshot.data;
+          if (role == 'blind') {
+            return const HomeBlind();
+          }
+          return const HomeVolunteer();
+        }
+      },
     );
   }
 }

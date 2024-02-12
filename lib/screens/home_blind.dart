@@ -6,7 +6,7 @@ class HomeBlind extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.all(20),
       child: Column(
         children: [
           ElevatedButton(

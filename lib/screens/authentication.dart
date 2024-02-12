@@ -23,7 +23,7 @@ class AuthenticationScreen extends StatelessWidget {
 
   Widget _eyeImage() {
     return SizedBox(
-      width: 370,
+      width: double.infinity,
       height: 230,
       child: Image.asset(
         'assets/images/eyes.png',
@@ -34,7 +34,6 @@ class AuthenticationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(dotenv.env['BACKEND_URL']);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(
